@@ -1,0 +1,39 @@
+<h1></h1>
+
+<script src='../jquery.min.js'></script>
+<script>
+var counter = 0
+
+var User = function(inputName, salary){
+	this.name = inputName,
+	this.username = inputName + inputName + Math.floor(Math.random() * 100).toString(),
+	this.salary = salary,
+	this.savings = 0,
+	$('body').append("<h1>Name: "+this.name+"</h1>")
+	$('body').append("<h3>Username: "+this.username+"</h3>")
+	$('body').append("<h4>Salary: "+this.salary.toString()+"</h4>")
+	$('body').append("<h4>Savings: <span id='"+this.username+'savings'+"'></span></h4>")
+	
+	this.update = function() {
+		this.savings += this.salary/2
+		$('#'+this.username+'savings').text(this.savings.toString())
+	}
+
+
+}
+
+var todd = new User('todd', 1000000)
+var jessica = new User('jessica', 400)
+var steve = new User('steve', 20)
+var betsy = new User('betsy', 10)
+
+function looper(){
+	todd.update()
+	jessica.update()
+	steve.update()
+	betsy.update()
+}
+
+
+setInterval(looper, 1000)
+</script>
